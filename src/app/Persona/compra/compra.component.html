@@ -1,0 +1,77 @@
+<div style="text-align: center">
+    <h2>Introduce los siguientes datos</h2>
+</div>
+<div class="container col-md-6">
+    <div class="card-body">
+        <form class="row g-3 needs-validation" [formGroup]="formularioCompra" (ngSubmit)="submit()"
+            style="margin-left: 10px;margin-top: 5px;" novalidate>
+            <div class="col-md-5">
+                <label for="validationCustom01" class="form-label">Nombre:</label>
+                <input [(ngModel)]="usuario.nombre" formControlName="nombre" name="nombre" type="text"
+                    class="form-control" id="validationCustom01" required>
+                <span *ngIf="this.formularioCompra.get('nombre')?.errors?.['required']" style="color: red;">
+                    (El nombre no puede quedar vacío)
+                </span>
+                <span *ngIf="this.formularioCompra.get('nombre')?.errors?.['minlength']" style="color: red;">
+                    (Debe tener como mínimo 10 caracteres)
+                </span>
+            </div>
+            <div class="col-md-5">
+                <label for="validationCustom01" class="form-label">Documento de identificacion:</label>
+                <input [(ngModel)]="usuario.cedula" formControlName="identificacion" name="identificacion" type="number"
+                    class="form-control" id="validationCustom01" required>
+                <span *ngIf="this.formularioCompra.get('identificacion')?.errors?.['required']" style="color: red;">
+                    (La cedula no puede quedar vacia)
+                </span>
+                <span *ngIf="this.formularioCompra.get('identificacion')?.errors?.['minlength']" style="color: red;">
+                    (Debe tener como mínimo 8 caracteres)
+                </span>
+            </div>
+            <div class="col-md-5">
+                <label for="validationCustom01" class="form-label">Direccion:</label>
+                <input [(ngModel)]="usuario.direccion" formControlName="direccion" name="direccion" type="text"
+                    class="form-control" id="validationCustom01" required>
+                <span *ngIf="this.formularioCompra.get('direccion')?.errors?.['required']" style="color: red;">
+                    (Digite la direccion de envio)
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+<div class="container col-md-5">
+    <div class="card-body">
+        <h3 style="text-align: center; color: red;">PRODUCTO!</h3>
+        <form action="">
+            <div class="form-group">
+                <label for="">Nombre:</label>
+                <input [(ngModel)]="producto.nombre" name="nombre" type="text" class="form-control" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label for="">Precio:</label>
+                <input [(ngModel)]="producto.precio" name="precio" type="number" class="form-control"
+                    readonly="readonly">
+            </div>
+            <div class="col-md-5" [formGroup]="formularioCompra" (ngSubmit)="submit()">
+                <label for="validationCustom03" class="form-label">Cantidad</label>
+                <input [(ngModel)]="compra.cantidad" formControlName="cantidad" name="cantidad" type="number"
+                    class="form-control" id="validationCustom03" required>
+                <span *ngIf="this.formularioCompra.get('cantidad')?.errors?.['required']" style="color: red;">
+                    (Ingrese una cantidad)
+                </span>
+                <span *ngIf="this.formularioCompra.get('cantidad')?.errors?.['minlength']" style="color: red;">
+                    (Ingrese una cantidad minima (1))
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="">Color:</label>
+                <input [(ngModel)]="producto.color" name="color" type="text" class="form-control" readonly="readonly">
+            </div>
+        </form>
+    </div>
+</div>
+<hr>
+<div>
+    <button (click)="Cancelar()" class="btn btn-info" style="margin-left: 32%;">Cancelar</button>
+    <button (click)="Confirmar()" class="btn btn-info" style="margin-left: 25%;">Confirmar</button>
+</div>

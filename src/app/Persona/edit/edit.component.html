@@ -1,0 +1,75 @@
+<div class="container col-md-7">
+    <div class="card">
+        <div class="card-header">
+            <h3>Modificar Productos</h3>
+        </div>
+        <form class="row g-3 needs-validation" [formGroup]="formularioEditar" (ngSubmit)="submit()" style="margin-left: 10px;margin-top: 5px;" novalidate>
+            <div class="col-md-5">
+                <label for="validationCustom01" class="form-label">Nombre:</label>
+                <input [(ngModel)]="producto.nombre" formControlName="nombre" name="nombre" type="text"
+                    class="form-control" id="validationCustom01" required>
+                <span *ngIf="this.formularioEditar.get('nombre')?.errors?.['required']" style="color: red;">
+                    (El nombre no puede quedar vacío)
+                </span>
+                <span *ngIf="this.formularioEditar.get('nombre')?.errors?.['minlength']" style="color: red;">
+                    (Debe tener como mínimo 10 caracteres)
+                </span>
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Precio:</label>
+                <input [(ngModel)]="producto.precio" formControlName="precio" name="precio" type="number"
+                    class="form-control" id="validationCustom02" required>
+                <span *ngIf="this.formularioEditar.get('precio')?.errors?.['required']" style="color: red;">
+                    (El precio no puede quedar vacío)
+                </span>
+                <span *ngIf="this.formularioEditar.get('precio')?.errors?.['minlength']" style="color: red;">
+                    (El precio no puede quedar vacío)
+                </span>
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom03" class="form-label">Cantidad</label>
+                <input [(ngModel)]="producto.cantidad" formControlName="cantidad" name="cantidad" type="number"
+                    class="form-control" id="validationCustom03" required>
+                <span *ngIf="this.formularioEditar.get('cantidad')?.errors?.['required']" style="color: red;">
+                    (Ingrese una cantidad)
+                </span>
+                <span *ngIf="this.formularioEditar.get('cantidad')?.errors?.['minlength']" style="color: red;">
+                    (Ingrese una cantidad)
+                </span>
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom04" class="form-label">Categoria:</label>
+                <select class="form-select" id="validationCustom04" formControlName="categoria" name="categoria"
+                    required>
+                    <option selected disabled value="">...</option>
+                    <option>Hogar</option>
+                    <option>Mascotas</option>
+                    <option>Electrodomesticos</option>
+                </select>
+                <span *ngIf="this.formularioEditar.get('categoria')?.errors?.['required']" style="color: red;">
+                    (Seleccione la categoria)
+                </span>
+                <span *ngIf="this.formularioEditar.get('categoria')?.errors?.['minlength']" style="color: red;">
+                    (Seleccione la categoria)
+                </span>
+            </div>
+            <div class="col-md-3">
+                <label for="validationCustom05" class="form-label">Color:</label>
+                <input [(ngModel)]="producto.color" formControlName="color" name="color" type="text"
+                    class="form-control" id="validationCustom05" required>
+                <span *ngIf="this.formularioEditar.get('color')?.errors?.['required']" style="color: red;">
+                    (Digite el color)
+                </span>
+                <span *ngIf="this.formularioEditar.get('color')?.errors?.['minlength']" style="color: red;">
+                    (Digite el color)
+                </span>
+            </div>
+            <div class="col-12" style="text-align: center;">
+                <button class="btn btn-danger" (click)="Actualizar(producto)" 
+                    style="background-color: aqua;color: black;border-color: darkgray; margin-bottom: 10px;">Actualizar</button>
+                    <button class="btn btn-danger" (click)="Cancelar()" 
+                    style="background-color: aqua;color: black;border-color: darkgray; margin-bottom: 10px;">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

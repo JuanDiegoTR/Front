@@ -1,0 +1,39 @@
+<div style="text-align: center">
+  <h1>Productos Disponibles</h1>
+</div>
+<br/>
+<div class="container">
+    <div class="card">
+        <div class="card-header" style="text-align: c;">
+            <h3 style="text-align: center;">Categorias</h3>
+            <button (click)="Todos()" class="btn btn-info">Todos</button>
+            <button (click)="Electrodomesticos()" class="btn btn-info" style="margin-left: 10px;">Electrodomesticos</button>
+            <button (click)="Hogar()" class="btn btn-info" style="margin-left: 10px;">Hogar</button>
+            <button (click)="Mascotas()" class="btn btn-info" style="margin-left: 10px;">Mascotas</button>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr style="text-align: center;">
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>PRECIO</th>
+                        <th>COLOR</th>
+                        <th>CANTIDAD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos" class="text-center">
+                        <td>{{producto.id}}</td>
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.precio}}</td>
+                        <td>{{producto.color}}</td>
+                        <td>
+                            <button (click)="Selecionar(producto)" class="btn btn-warning">Seleccionar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
